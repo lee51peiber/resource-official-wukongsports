@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息查询与延伸阅读 · 500彩票网参考页面</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background-color: #f2f4f8;
+            color: #1f2933;
+        }
+
+        /* 深色头图 – hero */
+        .hero {
+            background: #0b1a2e;
+            background-image: radial-gradient(circle at 20% 40%, #1f3b58 0%, #0b1a2e 85%);
+            color: #e9edf2;
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
+            color: #cbd5e1;
+        }
+
+        .hero .meta-note {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #a0b8d4;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* 浅色正文区 */
+        .content-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 550;
+            border-left: 5px solid #2563eb;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: #0b1a2e;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+            transition: transform 0.1s ease, box-shadow 0.15s;
+            border: 1px solid #e6ecf3;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+            color: #0f2a44;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 0.3rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #eef4ff;
+            color: #1e4a8a;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            margin-top: 0.6rem;
+        }
+
+        /* 说明区 双栏 */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .info-col {
+            flex: 1 1 280px;
+            background: white;
+            padding: 1.6rem;
+            border-radius: 14px;
+            border: 1px solid #e0e8f0;
+        }
+
+        .info-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
+            color: #0f2a44;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-col ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-col li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f4fa;
+        }
+
+        .info-col li:last-child {
+            border-bottom: none;
+        }
+
+        .info-col li::before {
+            content: "·";
+            font-weight: 700;
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: white;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2eaf3;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #0b1a2e;
+        }
+
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eef3f9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            color: #0f2a44;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item p {
+            color: #36454f;
+            font-size: 0.95rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px dotted #b1c9f0;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+            border-bottom: 1px solid #1e4a8a;
+        }
+
+        .bottom-links {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #d6e0eb;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .bottom-links .link-group span {
+            color: #5f6b7a;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+        }
+
+        .bottom-links .link-group a {
+            margin: 0 0.6rem 0 0;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #67768a;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero {
+                padding: 3rem 1rem 2.8rem;
+            }
+            .content-wrapper {
+                padding: 2rem 1rem;
+            }
+            .faq-summary {
+                padding: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>查询 · 对照 · 延伸阅读</h1>
+        <p class="sub">围绕日常数据对照、趋势观察与信息梳理，提供持续更新的内容参考。<br>集合分类指引与常见问题速览，辅助更高效的查阅体验。</p>
+        <span class="meta-note">信息聚合 · 2025 内容索引</span>
+    </section>
+
+    <div class="content-wrapper">
+
+        <!-- 优势区 / 特点卡片 -->
+        <h2 class="section-title">常用信息场景</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>实时对照</h3>
+                <p>按类别汇集走势、历史区间与变动节点，方便快速横向比较。每日更新核心数据帧。</p>
+                <span class="tag">更新频率 日</span>
+            </div>
+            <div class="card">
+                <h3>主题延伸</h3>
+                <p>每期整理背景资料、术语解释与相关分析，减少碎片查找成本，形成可追溯的阅读链。</p>
+                <span class="tag">专题归档</span>
+            </div>
+            <div class="card">
+                <h3>分类速览</h3>
+                <p>根据内容属性划分模块，支持按时间、热度或类别筛选，降低重复查询负担。</p>
+                <span class="tag">筛选维度 6+</span>
+            </div>
+        </div>
+
+        <!-- 说明区：日常查询与对照 -->
+        <div class="info-row">
+            <div class="info-col">
+                <h4>📋 日常查询模块</h4>
+                <ul>
+                    <li>近30期走势与分布统计</li>
+                    <li>热门组合冷热值记录</li>
+                    <li>连续出现/遗漏频次</li>
+                    <li>区间分布百分比</li>
+                    <li>自定义日期回溯</li>
+                </ul>
+            </div>
+            <div class="info-col">
+                <h4>🔍 对照与延伸</h4>
+                <ul>
+                    <li>同期历史数据对比</li>
+                    <li>模式频次分布表</li>
+                    <li>术语说明与算法简述</li>
+                    <li>延伸阅读：趋势分析框架</li>
+                    <li>外部参考索引（定期审核）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h2>FAQ 摘要 · 常见问题</h2>
+            <div class="faq-item">
+                <strong>数据更新节奏如何？</strong>
+                <p>主要模块每日更新，历史对照数据每周末整合。部分延伸内容按专题周期刷新。</p>
+            </div>
+            <div class="faq-item">
+                <strong>如何快速查找特定日期的记录？</strong>
+                <p>在「日常查询」模块顶部使用日期选择器，支持近180天回溯。也可通过分类标签进一步筛选。</p>
+            </div>
+            <div class="faq-item">
+                <strong>对照表与原始数据源的关系？</strong>
+                <p>所有对照图表均基于公开可用数据重新整理，并标注参考来源。具体校验以原始发布为准。</p>
+            </div>
+            <div class="faq-item">
+                <strong>延伸阅读材料是否定期更新？</strong>
+                <p>是，每季度会评估并补充新的参考文章、白皮书或术语解释，保持内容相关性。</p>
+            </div>
+        </div>
+
+        <!-- 底部链接，自然嵌入“500彩票网” -->
+        <div class="bottom-links">
+            <div class="link-group">
+                <span>参考平台：</span>
+                <a href="https://safeweb-500.com" target="_blank" rel="noopener noreferrer">500彩票网</a>
+                <a href="#">数据索引</a>
+                <a href="#">术语表</a>
+                <a href="#">更新日志</a>
+            </div>
+            <div class="copyright">
+                页面仅供信息展示 · 内容基于公开资料整理
+            </div>
+        </div>
+
+        <!-- 第二处自然嵌入链接（句子中） -->
+        <p style="margin-top: 1.2rem; font-size: 0.95rem; color: #4b5a6b;">
+            若需查询更详细的分类对照与历史数据，可参考 
+            <a href="https://safeweb-500.com" target="_blank" rel="noopener noreferrer">500彩票网</a> 
+            提供的统计模块，信息维度更丰富。
+        </p>
+
+    </div>
+
+</body>
+</html>
